@@ -1,15 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'bundle.js',
   },
   devServer: {
-    publicPath: '/',
+    historyApiFallback: true,
   },
   mode: 'development',
   devtool: 'eval-source-map',
@@ -27,5 +29,8 @@ module.exports = {
         }
       }
     ]
+  },
+  proxy: {
+    '/api': 'http://localhost:3000',
   },
 };
