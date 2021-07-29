@@ -1,0 +1,13 @@
+
+.image {
+    padding: 2px;
+    border: 1px;
+    border-color: gray;
+    border-style: inset;
+
+}
+
+img {
+  max-width: 100%;
+  max-height: 50%;
+}
