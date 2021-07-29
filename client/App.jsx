@@ -27,7 +27,7 @@ function App (){
       .catch((err) => {
         return ("Error: ", err)
       })
-  }, [data]);
+  }, []);
 
   return (
     <Router>

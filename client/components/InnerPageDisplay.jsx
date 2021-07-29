@@ -11,18 +11,20 @@ function InnerPageDisplay(props) {
   // get path and return relevant information from data
   const {pathname} = useLocation();
 
-  //get specific object for this path:
-  const index = pathname.slice(1);
-  // const { image, title, website } = data[index];
+  //get updated state
 
-  const data = props.giveme;
-  console.log(data);
-  const number = num[0];
+  //get specific object for this path:
+  // const index = pathname.slice(1);
+  // // const { image, title, website } = data[index];
+
+  // const data = props.giveme;
+  // console.log(data);
+  // const number = num[0];
 
   return (
     <div>
       <div className="header">
-        <h2>number</h2>
+        <h2>My Favorite Thing</h2>
       </div>
 
     </div>
