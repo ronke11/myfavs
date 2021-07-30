@@ -6,6 +6,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import RGL, { WidthProvider } from "react-grid-layout";
 import Image from './Image.jsx';
+import SearchBar from './SearchBar.jsx';
 import axios from 'axios';
 import regeneratorRuntime from "regenerator-runtime"
 
@@ -21,14 +22,34 @@ function ImagesDisplay(props) {
       // const result = await axios.get('http://localhost:3000/data');
       fetch('http://localhost:3000/data')
       .then(res => res.json())
-      .then(data => {
-        // setUpdate(true);
-        setData(data)
-        console.log(data)})
+      .then(data => setData(data))
       .catch((err) => {
         return ("Error: ", err)
       })
   }, []);
+
+
+  function getSearchValue(val) {
+    let searchResult = [];
+    const titlesObj = {};
+    for (let i = 0; i < data.length; i++) {
+      const {title} = data[i];
+      titlesObj[i] = title;
+    };
+
+    const titles = Object.values(titlesObj);
+    // // search titles
+    for (let i = 0; i < titles.length; i++)
+    {
+      searchResult = [];
+      const elem = titles[i];
+      // if match is found
+      if (elem.search(val) != -1) {
+        searchResult.push(data[i]);
+      }
+    }
+    console.log(searchResult);
+  };
 
 // to create the output in render
   //layout variables
@@ -36,7 +57,7 @@ function ImagesDisplay(props) {
   const layout = [];
   const cols = 8; // total grid width
   const w = 2; // grid item width
-  const rowHeight = 80; // total grid height
+  const rowHeight = 220;
   const h = 2; //Math.ceil(Math.random() * 2) + 1 // grid item height
   const output = [];
 
@@ -55,22 +76,35 @@ function ImagesDisplay(props) {
     });
 
     //generate divs for each image
-    let { image, id } = data[i];
+    let { image, title } = data[i];
     let click = "http://localhost:8080/"+i;
     output.push(
     <div key={i}>
       <a href={click}>
-        <Image url={image}/>
+        <Image url={image} title={title}/>
       </a>
     </div>
     )};
 
-  return (
-    <ReactGridLayout className="layout" layout={layout} cols={cols} rowHeight={rowHeight} width={1200} isResizeable={true}>
-      {output}
-    </ReactGridLayout>
-  )
 
+
+  return (
+    <div>
+      <h1 className='header'>
+        All My Favs
+      </h1>
+
+      <div className="topnav">
+        <SearchBar getSearchValue={getSearchValue}/>
+      </div>
+
+      <div>
+        <ReactGridLayout className="layout" layout={layout} cols={cols} rowHeight={rowHeight} width={1200} isResizeable={true}>
+          {output}
+        </ReactGridLayout>
+     </div>
+    </div>
+  )
 };
 
 

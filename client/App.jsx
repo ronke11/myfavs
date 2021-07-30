@@ -16,24 +16,12 @@ import DataContextProvider from './contexts/DataContext.jsx';
 
 function App (){
   //get data
-  const [data, setData] = useState([]);
-
-  useEffect( () => {
-      fetch('http://localhost:3000/data')
-      .then(res => res.json())
-      .then(data => {
-        setData(data)
-        console.log(data)})
-      .catch((err) => {
-        return ("Error: ", err)
-      })
-  }, []);
 
   return (
     <Router>
       <Switch>
         <Route exact path='/' render={() => <ImagesDisplay />} />
-        <Route path='/1' render={(props) => <InnerPageDisplay key={props.match.params} giveme={data}/>}/>
+        <Route render={(props) => <InnerPageDisplay key={props.match.params}/>}/>
       </Switch>
     </Router>
   );

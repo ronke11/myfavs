@@ -1,13 +1,31 @@
+.header {
+  position: sticky;
+  text-align: center;
+  text-decoration-color: blue;
+}
 
 .image {
     padding: 2px;
     border: 1px;
-    border-color: gray;
-    border-style: inset;
-
+    border-color: blue;
+    border-style: outset;
+    box-shadow: 5px 5px 5px grey;
 }
 
 img {
-  max-width: 100%;
-  max-height: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.searchForm {
+  background-color: silver;
+}
+
+.searchForm input[type=text] {
+  padding: 3px;
+  border: none;
+  margin-top: 2px;
+  margin-left: 12px;
+  font-size: 14px;
 }

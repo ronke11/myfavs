@@ -11,15 +11,6 @@ function InnerPageDisplay(props) {
   // get path and return relevant information from data
   const {pathname} = useLocation();
 
-  //get updated state
-
-  //get specific object for this path:
-  // const index = pathname.slice(1);
-  // // const { image, title, website } = data[index];
-
-  // const data = props.giveme;
-  // console.log(data);
-  // const number = num[0];
 
   return (
     <div>

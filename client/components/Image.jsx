@@ -7,7 +7,7 @@
  function Image(props) {
    return (
     <div className='image'>
-      <img src={props.url}/>
+      <img src={props.url} title={props.title}/>
     </div>
    )
 
